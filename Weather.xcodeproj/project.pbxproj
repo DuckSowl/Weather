@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A755BF924C62FE9002ED0C5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3A755BF824C62FE9002ED0C5 /* Alamofire */; };
+		3A755BFC24C63004002ED0C5 /* Pin in Frameworks */ = {isa = PBXBuildFile; productRef = 3A755BFB24C63004002ED0C5 /* Pin */; };
 		3AC9E12724C62926007F4865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E12624C62926007F4865 /* ViewController.swift */; };
 		3AC9E12C24C62929007F4865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12B24C62929007F4865 /* Assets.xcassets */; };
 		3AC9E12F24C62929007F4865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12D24C62929007F4865 /* LaunchScreen.storyboard */; };
@@ -29,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A755BFC24C63004002ED0C5 /* Pin in Frameworks */,
+				3A755BF924C62FE9002ED0C5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +108,10 @@
 			dependencies = (
 			);
 			name = Weather;
+			packageProductDependencies = (
+				3A755BF824C62FE9002ED0C5 /* Alamofire */,
+				3A755BFB24C63004002ED0C5 /* Pin */,
+			);
 			productName = Weather;
 			productReference = 3AC9E11F24C62926007F4865 /* Weather.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +140,10 @@
 				Base,
 			);
 			mainGroup = 3AC9E11624C62926007F4865;
+			packageReferences = (
+				3A755BF724C62FE9002ED0C5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3A755BFA24C63004002ED0C5 /* XCRemoteSwiftPackageReference "LittlePin" */,
+			);
 			productRefGroup = 3AC9E12024C62926007F4865 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +364,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A755BF724C62FE9002ED0C5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+		3A755BFA24C63004002ED0C5 /* XCRemoteSwiftPackageReference "LittlePin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DuckSowl/LittlePin.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A755BF824C62FE9002ED0C5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A755BF724C62FE9002ED0C5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		3A755BFB24C63004002ED0C5 /* Pin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A755BFA24C63004002ED0C5 /* XCRemoteSwiftPackageReference "LittlePin" */;
+			productName = Pin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3AC9E11724C62926007F4865 /* Project object */;
 }
