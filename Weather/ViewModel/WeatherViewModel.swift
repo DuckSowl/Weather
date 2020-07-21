@@ -37,7 +37,7 @@ struct WeatherViewModel {
         case .thunderstorm:     return UIColor(hex: 0x374D72)
         case .drizzle, .clouds: return UIColor(hex: 0x54ADCF)
         case .rain:             return UIColor(hex: 0x5A84A7)
-        case .snow:             return UIColor(hex: 0xF4F5F5)
+        case .snow:             return UIColor(hex: 0xd5dbe3)
         case .clear:            return UIColor(hex: 0xF7C479)
         case .atmosphere:       return UIColor(hex: 0xB4C3D9)
         }

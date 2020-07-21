@@ -12,7 +12,11 @@
 		3A755C2F24C75549002ED0C5 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C2E24C75549002ED0C5 /* Weather.swift */; };
 		3A755C3124C75D64002ED0C5 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C3024C75D64002ED0C5 /* UIColor+.swift */; };
 		3A755C3424C75E1F002ED0C5 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C3324C75E1F002ED0C5 /* WeatherViewModel.swift */; };
-		3AC9E12724C62926007F4865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E12624C62926007F4865 /* ViewController.swift */; };
+		3A755C3724C75F46002ED0C5 /* WeatherCollectionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C3624C75F46002ED0C5 /* WeatherCollectionStyle.swift */; };
+		3A755C3C24C75F52002ED0C5 /* WeatherCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C3924C75F52002ED0C5 /* WeatherCollectionController.swift */; };
+		3A755C3D24C75F52002ED0C5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C3A24C75F52002ED0C5 /* WeatherViewController.swift */; };
+		3A755C3E24C75F52002ED0C5 /* WeatherCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C3B24C75F52002ED0C5 /* WeatherCellView.swift */; };
+		3A755C4224C77B56002ED0C5 /* WeatherCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C4124C77B56002ED0C5 /* WeatherCollectionViewModel.swift */; };
 		3AC9E12C24C62929007F4865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12B24C62929007F4865 /* Assets.xcassets */; };
 		3AC9E12F24C62929007F4865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12D24C62929007F4865 /* LaunchScreen.storyboard */; };
 		3AC9E13B24C62A55007F4865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E13924C62A54007F4865 /* AppDelegate.swift */; };
@@ -23,8 +27,12 @@
 		3A755C2E24C75549002ED0C5 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		3A755C3024C75D64002ED0C5 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+.swift"; path = "Weather/Extensions/UIColor+.swift"; sourceTree = SOURCE_ROOT; };
 		3A755C3324C75E1F002ED0C5 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		3A755C3624C75F46002ED0C5 /* WeatherCollectionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCollectionStyle.swift; sourceTree = "<group>"; };
+		3A755C3924C75F52002ED0C5 /* WeatherCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCollectionController.swift; sourceTree = "<group>"; };
+		3A755C3A24C75F52002ED0C5 /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		3A755C3B24C75F52002ED0C5 /* WeatherCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCellView.swift; sourceTree = "<group>"; };
+		3A755C4124C77B56002ED0C5 /* WeatherCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewModel.swift; sourceTree = "<group>"; };
 		3AC9E11F24C62926007F4865 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC9E12624C62926007F4865 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3AC9E12B24C62929007F4865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AC9E12E24C62929007F4865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AC9E13024C62929007F4865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,8 +73,20 @@
 			isa = PBXGroup;
 			children = (
 				3A755C3324C75E1F002ED0C5 /* WeatherViewModel.swift */,
+				3A755C3624C75F46002ED0C5 /* WeatherCollectionStyle.swift */,
+				3A755C4124C77B56002ED0C5 /* WeatherCollectionViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3A755C3824C75F52002ED0C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A755C3A24C75F52002ED0C5 /* WeatherViewController.swift */,
+				3A755C3B24C75F52002ED0C5 /* WeatherCellView.swift */,
+				3A755C3924C75F52002ED0C5 /* WeatherCollectionController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3AC9E11624C62926007F4865 = {
@@ -89,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				3AC9E13624C629BE007F4865 /* Application */,
-				3AC9E12624C62926007F4865 /* ViewController.swift */,
+				3A755C3824C75F52002ED0C5 /* View */,
 				3A755C3524C75E24002ED0C5 /* ViewModel */,
 				3A755C2D24C75549002ED0C5 /* Model */,
 				3A755C3224C75D68002ED0C5 /* Extensions */,
@@ -203,12 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A755C3724C75F46002ED0C5 /* WeatherCollectionStyle.swift in Sources */,
+				3A755C3D24C75F52002ED0C5 /* WeatherViewController.swift in Sources */,
 				3A755C2F24C75549002ED0C5 /* Weather.swift in Sources */,
 				3A755C3424C75E1F002ED0C5 /* WeatherViewModel.swift in Sources */,
 				3AC9E13B24C62A55007F4865 /* AppDelegate.swift in Sources */,
-				3AC9E12724C62926007F4865 /* ViewController.swift in Sources */,
+				3A755C3C24C75F52002ED0C5 /* WeatherCollectionController.swift in Sources */,
 				3AC9E13C24C62A55007F4865 /* SceneDelegate.swift in Sources */,
 				3A755C3124C75D64002ED0C5 /* UIColor+.swift in Sources */,
+				3A755C4224C77B56002ED0C5 /* WeatherCollectionViewModel.swift in Sources */,
+				3A755C3E24C75F52002ED0C5 /* WeatherCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
