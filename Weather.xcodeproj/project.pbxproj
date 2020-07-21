@@ -3,27 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3AC9E12324C62926007F4865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E12224C62926007F4865 /* AppDelegate.swift */; };
-		3AC9E12524C62926007F4865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E12424C62926007F4865 /* SceneDelegate.swift */; };
+		3A755BF924C62FE9002ED0C5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3A755BF824C62FE9002ED0C5 /* Alamofire */; };
+		3A755BFC24C63004002ED0C5 /* Pin in Frameworks */ = {isa = PBXBuildFile; productRef = 3A755BFB24C63004002ED0C5 /* Pin */; };
 		3AC9E12724C62926007F4865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E12624C62926007F4865 /* ViewController.swift */; };
-		3AC9E12A24C62926007F4865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12824C62926007F4865 /* Main.storyboard */; };
 		3AC9E12C24C62929007F4865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12B24C62929007F4865 /* Assets.xcassets */; };
 		3AC9E12F24C62929007F4865 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC9E12D24C62929007F4865 /* LaunchScreen.storyboard */; };
+		3AC9E13B24C62A55007F4865 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E13924C62A54007F4865 /* AppDelegate.swift */; };
+		3AC9E13C24C62A55007F4865 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9E13A24C62A55007F4865 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3AC9E11F24C62926007F4865 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC9E12224C62926007F4865 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3AC9E12424C62926007F4865 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3AC9E12624C62926007F4865 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3AC9E12924C62926007F4865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AC9E12B24C62929007F4865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AC9E12E24C62929007F4865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AC9E13024C62929007F4865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AC9E13924C62A54007F4865 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3AC9E13A24C62A55007F4865 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A755BFC24C63004002ED0C5 /* Pin in Frameworks */,
+				3A755BF924C62FE9002ED0C5 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +58,38 @@
 		3AC9E12124C62926007F4865 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				3AC9E12224C62926007F4865 /* AppDelegate.swift */,
-				3AC9E12424C62926007F4865 /* SceneDelegate.swift */,
+				3AC9E13624C629BE007F4865 /* Application */,
 				3AC9E12624C62926007F4865 /* ViewController.swift */,
-				3AC9E12824C62926007F4865 /* Main.storyboard */,
-				3AC9E12B24C62929007F4865 /* Assets.xcassets */,
+				3AC9E13824C629EC007F4865 /* Resources */,
+				3AC9E13724C629DE007F4865 /* Supporting Files */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		3AC9E13624C629BE007F4865 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3AC9E13924C62A54007F4865 /* AppDelegate.swift */,
+				3AC9E13A24C62A55007F4865 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3AC9E13724C629DE007F4865 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				3AC9E12D24C62929007F4865 /* LaunchScreen.storyboard */,
 				3AC9E13024C62929007F4865 /* Info.plist */,
 			);
-			path = Weather;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3AC9E13824C629EC007F4865 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AC9E12B24C62929007F4865 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +108,10 @@
 			dependencies = (
 			);
 			name = Weather;
+			packageProductDependencies = (
+				3A755BF824C62FE9002ED0C5 /* Alamofire */,
+				3A755BFB24C63004002ED0C5 /* Pin */,
+			);
 			productName = Weather;
 			productReference = 3AC9E11F24C62926007F4865 /* Weather.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +140,10 @@
 				Base,
 			);
 			mainGroup = 3AC9E11624C62926007F4865;
+			packageReferences = (
+				3A755BF724C62FE9002ED0C5 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				3A755BFA24C63004002ED0C5 /* XCRemoteSwiftPackageReference "LittlePin" */,
+			);
 			productRefGroup = 3AC9E12024C62926007F4865 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +160,6 @@
 			files = (
 				3AC9E12F24C62929007F4865 /* LaunchScreen.storyboard in Resources */,
 				3AC9E12C24C62929007F4865 /* Assets.xcassets in Resources */,
-				3AC9E12A24C62926007F4865 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +170,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC9E13B24C62A55007F4865 /* AppDelegate.swift in Sources */,
 				3AC9E12724C62926007F4865 /* ViewController.swift in Sources */,
-				3AC9E12324C62926007F4865 /* AppDelegate.swift in Sources */,
-				3AC9E12524C62926007F4865 /* SceneDelegate.swift in Sources */,
+				3AC9E13C24C62A55007F4865 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3AC9E12824C62926007F4865 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3AC9E12924C62926007F4865 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3AC9E12D24C62929007F4865 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,7 +310,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3B68N99HN;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = "Weather/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +319,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ducksowl.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -304,7 +329,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3B68N99HN;
-				INFOPLIST_FILE = Weather/Info.plist;
+				INFOPLIST_FILE = "Weather/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ducksowl.Weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -338,6 +364,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A755BF724C62FE9002ED0C5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.2;
+			};
+		};
+		3A755BFA24C63004002ED0C5 /* XCRemoteSwiftPackageReference "LittlePin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DuckSowl/LittlePin.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A755BF824C62FE9002ED0C5 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A755BF724C62FE9002ED0C5 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		3A755BFB24C63004002ED0C5 /* Pin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A755BFA24C63004002ED0C5 /* XCRemoteSwiftPackageReference "LittlePin" */;
+			productName = Pin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3AC9E11724C62926007F4865 /* Project object */;
 }
