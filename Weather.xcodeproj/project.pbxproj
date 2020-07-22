@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A207E5524C8645D004FB459 /* cities.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3A207E5424C8645D004FB459 /* cities.csv */; };
 		3A755BF924C62FE9002ED0C5 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3A755BF824C62FE9002ED0C5 /* Alamofire */; };
 		3A755BFC24C63004002ED0C5 /* Pin in Frameworks */ = {isa = PBXBuildFile; productRef = 3A755BFB24C63004002ED0C5 /* Pin */; };
 		3A755C2F24C75549002ED0C5 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A755C2E24C75549002ED0C5 /* Weather.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A207E5424C8645D004FB459 /* cities.csv */ = {isa = PBXFileReference; lastKnownFileType = file; name = cities.csv; path = Weather/Resources/cities.csv; sourceTree = SOURCE_ROOT; };
 		3A755C2E24C75549002ED0C5 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		3A755C3024C75D64002ED0C5 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+.swift"; path = "Weather/Extensions/UIColor+.swift"; sourceTree = SOURCE_ROOT; };
 		3A755C3324C75E1F002ED0C5 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		3AC9E13824C629EC007F4865 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3A207E5424C8645D004FB459 /* cities.csv */,
 				3AC9E12B24C62929007F4865 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -211,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A207E5524C8645D004FB459 /* cities.csv in Resources */,
 				3AC9E12F24C62929007F4865 /* LaunchScreen.storyboard in Resources */,
 				3AC9E12C24C62929007F4865 /* Assets.xcassets in Resources */,
 			);
