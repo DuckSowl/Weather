@@ -9,7 +9,11 @@
 import UIKit
 
 struct WeatherViewModel {
-    let weather: Weather
+    private let weather: Weather
+    
+    init(weather: Weather) {
+        self.weather = weather
+    }
     
     var city: String {
         weather.city

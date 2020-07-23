@@ -16,8 +16,17 @@ final class WeatherCollectionController: UIViewController {
         didSet { configureCollectionStyle() }
     }
     
-    var viewModel: WeatherCollectionViewModel? {
-        didSet { collectionView.reloadData() }
+    private weak var viewModel: WeatherCollectionViewModel?
+    
+    init(with viewModel: WeatherCollectionViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.viewModel = viewModel
+        self.viewModel?.delegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Subviews
@@ -39,7 +48,7 @@ final class WeatherCollectionController: UIViewController {
         collectionView.register(WeatherCellView.self,
                                 forCellWithReuseIdentifier: Constants.cellId)
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         
         return collectionView
     }()
@@ -86,6 +95,7 @@ extension WeatherCollectionController: UICollectionViewDataSource {
         
         cell.style = style
         cell.viewModel = viewModel?.weatherList[indexPath.row]
+        cell.delegate = self
             
         return cell
     }
@@ -100,5 +110,19 @@ extension WeatherCollectionController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - SwipeableCollectionViewCellDelegate
 
+extension WeatherCollectionController: SwipeableCollectionViewCellDelegate {
+    func didSwipeToDelete(cell: UICollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        viewModel?.remove(at: indexPath.row)
+    }
+}
 
+// MARK: - UpdateDelegate
+
+extension WeatherCollectionController: UpdateDelegate {
+    func didUpdate() {
+        collectionView.reloadData()
+    }
+}
