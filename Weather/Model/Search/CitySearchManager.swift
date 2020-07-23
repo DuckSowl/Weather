@@ -45,14 +45,34 @@ final class CitySearchManager {
             let firstCountry = $0.country.lowercased()
             let secondCountry = $1.country.lowercased()
             
-            return firstName.contains(filter) && secondName.contains(filter) ?
-                // If both city names contains filter, sort by first occurrence
-                firstName.firstIndex(of: filter)! < secondName.firstIndex(of: filter)!
-                // If only one city name contains filter, it goes first
-                : firstName.contains(filter) ? true
-                : secondName.contains(filter) ? true
-                    // If only countries contains filter, sort by first occurrence
-                : firstCountry.firstIndex(of: filter)! < secondCountry.firstIndex(of: filter)!
+            return
+                // If both city names contains filter
+                firstName.contains(filter) && secondName.contains(filter)
+                    // and filter occures in firstName earlier
+                    ? firstName.firstIndex(of: filter)! < secondName.firstIndex(of: filter)!
+                        // first
+                        ? true
+                    // else if both occurences are the same
+                    : firstName.firstIndex(of: filter)! == secondName.firstIndex(of: filter)!
+                        // then sort by city name
+                        ? firstName < secondName
+                    // second
+                    : false
+                        
+                // else if both countries contains filter
+                : firstCountry.contains(filter) && secondCountry.contains(filter)
+                    // and filter occures in firstCountry earlier
+                    ? firstCountry.firstIndex(of: filter)! < secondCountry.firstIndex(of: filter)!
+                        // first
+                        ? true
+                    // else if both occurences are the same
+                    : firstCountry.firstIndex(of: filter)! == secondCountry.firstIndex(of: filter)!
+                        // then sort by country name
+                        ? firstCountry < secondCountry
+                    // second country name occures later
+                    : false
+                // if nothing else only one city name contains filter
+                : firstName.contains(filter)
         }
     }
 }
