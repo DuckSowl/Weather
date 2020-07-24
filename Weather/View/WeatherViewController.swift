@@ -48,7 +48,7 @@ final class WeatherViewController: UIViewController, UISearchBarDelegate {
         weatherLabel.font = .preferredFont(forTextStyle: .title1)
         
         headerView.addSubview(weatherLabel)
-        weatherLabel.pin.left(20).bottom(20).activate
+        weatherLabel.pin.left(20).bottom(15).activate
         
         return headerView
     }()

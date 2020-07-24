@@ -34,7 +34,6 @@ final class WeatherCollectionController: UIViewController {
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         return layout
     }()
     
@@ -66,11 +65,12 @@ final class WeatherCollectionController: UIViewController {
             layout.scrollDirection = .horizontal
             collectionView.isPagingEnabled = true
             collectionView.alwaysBounceVertical = false
-                        
+            layout.estimatedItemSize = .zero
         case .rows:
             layout.scrollDirection = .vertical
             collectionView.isPagingEnabled = false
             collectionView.alwaysBounceVertical = true
+            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
         
         collectionView.reloadData()
