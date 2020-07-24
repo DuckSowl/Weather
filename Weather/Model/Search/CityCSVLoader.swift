@@ -12,7 +12,7 @@ struct CityCSVLoader {
     
     private let citiesUrl: URL
     
-    init?(citiesUrl: URL) {
+    init(with citiesUrl: URL) {
         self.citiesUrl = citiesUrl
     }
     

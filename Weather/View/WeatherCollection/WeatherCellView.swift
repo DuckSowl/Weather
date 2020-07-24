@@ -9,10 +9,10 @@
 import Pin
 import UIKit
 
-final class WeatherCellView: UICollectionViewCell {
+final class WeatherCellView: SwipeableCollectionViewCell {
     
     // MARK: - Cell configuration properties
-    
+        
     var viewModel: WeatherViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -28,6 +28,7 @@ final class WeatherCellView: UICollectionViewCell {
         didSet {
             configureConstraints()
             configureFonts()
+            configureDeletion()
         }
     }
     
@@ -40,7 +41,7 @@ final class WeatherCellView: UICollectionViewCell {
     private var label: UILabel {
         let label = UILabel()
         label.textColor = .white
-        addSubview(label)
+        swipableContentView.addSubview(label)
         return label
     }
     
@@ -49,10 +50,10 @@ final class WeatherCellView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .gray
+        setupDeletionView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -98,5 +99,19 @@ final class WeatherCellView: UICollectionViewCell {
             }
             temperatureLabel.font = .preferredFont(forTextStyle: .title1)
         }
+    }
+    
+    private func configureDeletion() {
+        isDeletionEnabled = style == .rows
+    }
+    
+    private func setupDeletionView() {
+        deletionContentView.backgroundColor = WeatherViewModel.deletionColor
+        let deletionImage = UIImageView(image: WeatherViewModel.deletionImage)
+        deletionImage.tintColor = WeatherViewModel.deletionImageColor
+        deletionContentView.addSubview(deletionImage)
+        
+        deletionImage.pin.left(20).vCenter()
+            .size(WeatherViewModel.deletionImageSize).activate
     }
 }

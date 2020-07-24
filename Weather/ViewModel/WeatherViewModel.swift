@@ -9,7 +9,11 @@
 import UIKit
 
 struct WeatherViewModel {
-    let weather: Weather
+    private let weather: Weather
+    
+    init(weather: Weather) {
+        self.weather = weather
+    }
     
     var city: String {
         weather.city
@@ -42,4 +46,9 @@ struct WeatherViewModel {
         case .atmosphere:       return UIColor(hex: 0xB4C3D9)
         }
     }
+    
+    static let deletionColor = UIColor(hex: 0xDD3946)
+    static let deletionImage = UIImage(systemName: "trash")
+    static let deletionImageColor = UIColor.white
+    static let deletionImageSize = CGSize(same: 40)
 }
