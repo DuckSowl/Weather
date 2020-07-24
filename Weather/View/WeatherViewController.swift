@@ -7,84 +7,138 @@
 //
 
 import UIKit
+import Pin
 import CoreLocation
 
 final class WeatherViewController: UIViewController, UISearchBarDelegate {
     
+    // MARK: - View Model
+    
+    typealias ViewModel = WeatherControllerViewModel
+    let viewModel = WeatherControllerViewModel()
+    
+    // MARK: - Subviews
+    
+    private lazy var newCityButton: UIButton =
+    makeButton(with: ViewModel.newCityButtonImage,
+               action: #selector(addNewCity),
+               pins: { $0.left(30).bottomSafe(20) })
+    
+    private lazy var toggleStyleButton: UIButton =
+        makeButton(with: ViewModel.styleButtonImage,
+                   action: #selector(toggleStyle),
+                   pins: { $0.right(30).bottomSafe(20) })
+            
     private lazy var weatherCollectionController: WeatherCollectionController = {
-        return WeatherCollectionController(with: weatherCollectionViewModel)
-    }()
-    
-    private lazy var collectionStyleButton: UIButton = {
-        let collectionStyleButton = UIButton()
-        let image = UIImage(systemName: "equal",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 50,
-                                                                           weight: .regular))
-        collectionStyleButton.setImage(image, for: .normal)
-        view.addSubview(collectionStyleButton)
-        collectionStyleButton.addTarget(self, action: #selector(table),
-                                        for: .touchUpInside)
-        
-        collectionStyleButton.tintColor = .white
-        
-        view.addSubview(collectionStyleButton)
-        collectionStyleButton.pin.right(30).bottomSafe(20).activate
-        return collectionStyleButton
-    }()
-    
-    private lazy var addNewCityButton: UIButton = {
-        let collectionStyleButton = UIButton()
-        let image = UIImage(systemName: "plus",
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 40,
-                                                                           weight: .medium))
-        collectionStyleButton.setImage(image, for: .normal)
-        view.addSubview(collectionStyleButton)
-        collectionStyleButton.addTarget(self, action: #selector(addNewCity),
-                                        for: .touchUpInside)
-        
-        collectionStyleButton.tintColor = .white
-        
-        view.addSubview(collectionStyleButton)
-        collectionStyleButton.pin.left(30).bottomSafe(20).activate
-        return collectionStyleButton
-    }()
-    
-    var weatherCollectionViewModel = WeatherCollectionViewModel(weatherList:
-        [Weather(city: "Moscow", temperature: 13, condition: .clouds),
-         Weather(city: "London", temperature: 22, condition: .rain),
-         Weather(city: "Paris",  temperature: 26, condition: .clear)
-    ])
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .lightGray
-        
+        let weatherCollectionController = WeatherCollectionController(with: viewModel.weatherCollectionViewModel)
         addChild(weatherCollectionController)
         view.addSubview(weatherCollectionController.view)
         didMove(toParent: self)
-                
-        _ = collectionStyleButton
-        _ = addNewCityButton
+        return weatherCollectionController
+    }()
+    
+    private lazy var footerView = makeHeaderFooterView()
+    
+    private lazy var headerView: UIView = {
+        let headerView = makeHeaderFooterView()
         
-        view.backgroundColor = UIColor(hex: 0xF0F0F0)
-        weatherCollectionController.view.pin.all().activate
+        let weatherLabel = UILabel()
+        weatherLabel.text = ViewModel.weatherLabel
+        weatherLabel.textColor = ViewModel.tintColor
+        weatherLabel.font = .preferredFont(forTextStyle: .title1)
+        
+        headerView.addSubview(weatherLabel)
+        weatherLabel.pin.left(20).bottom(20).activate
+        
+        return headerView
+    }()
+
+    // MARK: - View Life Cycle
+    
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = ViewModel.backgroundColor
+        
+        configureConstraints()
+        
+        // Add lazy buttons to view
+        _ = toggleStyleButton
+        _ = newCityButton
     }
+    
+    // MARK: - View Configuration
+    
+    private func configureConstraints() {
+        if weatherCollectionController.style == .pages {
+            headerView.pin.unpin().activate
+            footerView.pin.unpin().activate
+            weatherCollectionController.view.pin.unpin().all().activate
+        } else {
+            headerView.pin.sides().height(100).top().activate
+            footerView.pin.sides().height(110).bottom().activate
+            weatherCollectionController.view.pin.unpin()
+                .below(headerView).above(footerView)
+                .sides().activate
+        }
+    }
+    
+    private var footerHeaderIsHidden: Bool = true {
+        didSet {
+            [headerView, footerView].forEach { $0.isHidden = footerHeaderIsHidden }
+        }
+    }
+    
+    // MARK: - Actions
     
     @objc private func addNewCity() {
-        weatherCollectionViewModel.add(weather: Weather(city: "New Orlean",
-                                                        temperature: -273,
-                                                        condition: .thunderstorm))
+        let citySearchController = CitySearchController()
+        present(citySearchController, animated: true)
+        
+        citySearchController.delegate = self
     }
     
- 
-    @objc private func table() {
-        // TODO: - Move to collection view
+    @objc private func toggleStyle() {
         if weatherCollectionController.style == .pages {
             weatherCollectionController.style = .rows
-            collectionStyleButton.tintColor = .black
+            footerHeaderIsHidden = false
         } else {
-             weatherCollectionController.style = .pages
-            collectionStyleButton.tintColor = .white
+            weatherCollectionController.style = .pages
+            footerHeaderIsHidden = true
         }
+        configureConstraints()
+    }
+    
+    // MARK: - View Creation
+    
+    private func makeButton(with image: UIImage, action: Selector,
+                            pins: ((Pin) -> (Pin))) -> UIButton {
+        let button = UIButton()
+        button.setImage(image, for: .normal)
+        button.tintColor = ViewModel.tintColor
+        
+        button.addTarget(self, action: action, for: .touchUpInside)
+        
+        view.addSubview(button)
+        pins(button.pin).activate
+        return button
+    }
+    
+    private func makeHeaderFooterView() -> UIView {
+        let subview = UIView()
+        subview.backgroundColor = ViewModel.headerFooterColor
+        view.addSubview(subview)
+        return subview
+    }
+}
+
+extension WeatherViewController: CitySearchControllerDelegate {
+    func didSelect(city: City) {
+        // Example weather addition
+        let someConditions = [Weather.Condition.clear, .drizzle, .snow, .thunderstorm]
+        viewModel
+            .weatherCollectionViewModel
+            .add(weather: Weather(city: city.name,
+                                  temperature: Int.random(in: -30...30),
+                                  condition: someConditions.randomElement()!))
     }
 }

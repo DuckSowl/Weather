@@ -53,7 +53,7 @@ final class WeatherCellView: SwipeableCollectionViewCell {
         setupDeletionView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
