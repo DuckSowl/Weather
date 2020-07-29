@@ -22,11 +22,9 @@ final class WeatherCellView: SwipeableCollectionViewCell {
             conditionLabel.text = viewModel.condition
             backgroundColor = viewModel.color
             accessibilityIdentifier = "\(viewModel.city)"
-        }
-    }
-    
-    var style: WeatherCollectionStyle = .pages {
-        didSet {
+            
+            delegate = viewModel.delegate
+            
             configureConstraints()
             configureFonts()
             configureDeletion()
@@ -61,7 +59,9 @@ final class WeatherCellView: SwipeableCollectionViewCell {
     // MARK: - Cell Configuration
     
     private func configureConstraints() {
-        switch style {
+        guard let viewModel = viewModel else { return }
+        
+        switch viewModel.style {
         case .pages:
             cityLabel.pin.unpin().hCenter().activate
             
@@ -88,7 +88,9 @@ final class WeatherCellView: SwipeableCollectionViewCell {
     }
     
     private func configureFonts() {
-        switch style {
+        guard let viewModel = viewModel else { return }
+        
+        switch viewModel.style {
         case .pages:
             [cityLabel, conditionLabel].forEach {
                 $0.font = .preferredFont(forTextStyle: .title1)
@@ -103,7 +105,7 @@ final class WeatherCellView: SwipeableCollectionViewCell {
     }
     
     private func configureDeletion() {
-        isDeletionEnabled = style == .rows
+        isDeletionEnabled = viewModel?.style == .rows
     }
     
     private func setupDeletionView() {

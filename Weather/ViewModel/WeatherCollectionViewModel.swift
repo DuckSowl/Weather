@@ -9,16 +9,25 @@
 import Foundation
 
 class WeatherCollectionViewModel {
-    weak var delegate: UpdateDelegate?
     
     private var _weatherList: [Weather]
     
-    init(weatherList: [Weather]) {
+    var style: WeatherCollectionStyle {
+        didSet { update() }
+    }
+
+    weak var updateDelegate: UpdateDelegate?
+    weak var cellDelegate: SwipeableCollectionViewCellDelegate?
+        
+    init(weatherList: [Weather], style: WeatherCollectionStyle) {
         _weatherList = weatherList
+        self.style = style
     }
     
     var weatherList: [WeatherViewModel] {
-        _weatherList.map { WeatherViewModel(weather: $0) }
+        _weatherList.map {
+            WeatherViewModel(weather: $0, style: style, delegate: cellDelegate)
+        }
     }
     
     func remove(at index: Int) {
@@ -32,6 +41,6 @@ class WeatherCollectionViewModel {
     }
     
     private func update() {
-        delegate?.didUpdate()
+        updateDelegate?.didUpdate()
     }
 }

@@ -13,8 +13,8 @@ struct WeatherControllerViewModel {
     var weatherCollectionViewModel = WeatherCollectionViewModel(weatherList:
         [Weather(city: "Moscow", temperature: 13, condition: .clouds),
          Weather(city: "London", temperature: 22, condition: .rain),
-         Weather(city: "Paris",  temperature: 26, condition: .clear)
-    ])
+         Weather(city: "Paris",  temperature: 26, condition: .clear)],
+                                                                style: .pages)
     
     // MARK: - Colors
     static let tintColor = UIColor.white

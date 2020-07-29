@@ -10,19 +10,22 @@ import UIKit
 
 final class WeatherCollectionController: UIViewController {
     
-    // MARK: - View configutaion properties
+    // MARK: - Constants
     
-    var style: WeatherCollectionStyle = .pages {
-        didSet { configureCollectionStyle() }
-    }
+    let cellId = "WeatherCellView"
     
-    private weak var viewModel: WeatherCollectionViewModel?
+    // MARK: - View Model
+    
+    weak var viewModel: WeatherCollectionViewModel?
+    
+    // MARK: - Initializers
     
     init(with viewModel: WeatherCollectionViewModel) {
         super.init(nibName: nil, bundle: nil)
         
         self.viewModel = viewModel
-        self.viewModel?.delegate = self
+        self.viewModel?.updateDelegate = self
+        self.viewModel?.cellDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -45,7 +48,7 @@ final class WeatherCollectionController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.register(WeatherCellView.self,
-                                forCellWithReuseIdentifier: Constants.cellId)
+                                forCellWithReuseIdentifier: cellId)
         
         collectionView.backgroundColor = .clear
         
@@ -56,11 +59,13 @@ final class WeatherCollectionController: UIViewController {
     
     override func loadView() {
         view = collectionView
-        configureCollectionStyle()
+        configureAndReload()
     }
     
-    private func configureCollectionStyle() {
-        switch style {
+    private func configureAndReload() {
+        guard let viewModel = viewModel else { return }
+        
+        switch viewModel.style {
         case .pages:
             layout.scrollDirection = .horizontal
             collectionView.isPagingEnabled = true
@@ -75,11 +80,6 @@ final class WeatherCollectionController: UIViewController {
         
         collectionView.reloadData()
     }
-    
-    private enum Constants {
-        static let cellId = "WeatherCellView"
-
-    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -91,11 +91,9 @@ extension WeatherCollectionController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellId, for: indexPath) as! WeatherCellView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! WeatherCellView
         
-        cell.style = style
         cell.viewModel = viewModel?.weatherList[indexPath.row]
-        cell.delegate = self
             
         return cell
     }
@@ -123,6 +121,6 @@ extension WeatherCollectionController: SwipeableCollectionViewCellDelegate {
 
 extension WeatherCollectionController: UpdateDelegate {
     func didUpdate() {
-        collectionView.reloadData()
+        configureAndReload()
     }
 }

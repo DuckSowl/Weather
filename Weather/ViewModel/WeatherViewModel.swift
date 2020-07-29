@@ -11,8 +11,11 @@ import UIKit
 struct WeatherViewModel {
     private let weather: Weather
     
-    init(weather: Weather) {
+    init(weather: Weather, style: WeatherCollectionStyle,
+         delegate: SwipeableCollectionViewCellDelegate?) {
         self.weather = weather
+        self.style = style
+        self.delegate = delegate
     }
     
     var city: String {
@@ -46,6 +49,9 @@ struct WeatherViewModel {
         case .atmosphere:       return UIColor(hex: 0xB4C3D9)
         }
     }
+    
+    var style: WeatherCollectionStyle
+    weak var delegate: SwipeableCollectionViewCellDelegate?
     
     static let deletionColor = UIColor(hex: 0xDD3946)
     static let deletionImage = UIImage(systemName: "trash")

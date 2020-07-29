@@ -71,7 +71,7 @@ final class WeatherViewController: UIViewController, UISearchBarDelegate {
     // MARK: - View Configuration
     
     private func configureConstraints() {
-        if weatherCollectionController.style == .pages {
+        if weatherCollectionController.viewModel?.style == .pages {
             headerView.pin.unpin().activate
             footerView.pin.unpin().activate
             weatherCollectionController.view.pin.unpin().all().activate
@@ -100,11 +100,11 @@ final class WeatherViewController: UIViewController, UISearchBarDelegate {
     }
     
     @objc private func toggleStyle() {
-        if weatherCollectionController.style == .pages {
-            weatherCollectionController.style = .rows
+        if weatherCollectionController.viewModel?.style == .pages {
+            weatherCollectionController.viewModel?.style = .rows
             footerHeaderIsHidden = false
         } else {
-            weatherCollectionController.style = .pages
+            weatherCollectionController.viewModel?.style = .pages
             footerHeaderIsHidden = true
         }
         configureConstraints()
