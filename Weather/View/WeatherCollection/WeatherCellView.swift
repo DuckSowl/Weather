@@ -21,6 +21,7 @@ final class WeatherCellView: SwipeableCollectionViewCell {
             temperatureLabel.text = viewModel.temperature
             conditionLabel.text = viewModel.condition
             backgroundColor = viewModel.color
+            accessibilityIdentifier = "\(viewModel.city)"
         }
     }
     

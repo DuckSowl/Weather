@@ -22,12 +22,14 @@ final class WeatherViewController: UIViewController, UISearchBarDelegate {
     private lazy var newCityButton: UIButton =
     makeButton(with: ViewModel.newCityButtonImage,
                action: #selector(addNewCity),
-               pins: { $0.left(30).bottomSafe(20) })
+               pins: { $0.left(30).bottomSafe(20) },
+               accessibilityIdentifier: "add_city")
     
     private lazy var toggleStyleButton: UIButton =
         makeButton(with: ViewModel.styleButtonImage,
                    action: #selector(toggleStyle),
-                   pins: { $0.right(30).bottomSafe(20) })
+                   pins: { $0.right(30).bottomSafe(20) },
+                   accessibilityIdentifier: "toggle_style")
             
     private lazy var weatherCollectionController: WeatherCollectionController = {
         let weatherCollectionController = WeatherCollectionController(with: viewModel.weatherCollectionViewModel)
@@ -111,7 +113,8 @@ final class WeatherViewController: UIViewController, UISearchBarDelegate {
     // MARK: - View Creation
     
     private func makeButton(with image: UIImage, action: Selector,
-                            pins: ((Pin) -> (Pin))) -> UIButton {
+                            pins: ((Pin) -> (Pin)),
+                            accessibilityIdentifier: String) -> UIButton {
         let button = UIButton()
         button.setImage(image, for: .normal)
         button.tintColor = ViewModel.tintColor
@@ -120,6 +123,8 @@ final class WeatherViewController: UIViewController, UISearchBarDelegate {
         
         view.addSubview(button)
         pins(button.pin).activate
+        
+        button.accessibilityIdentifier = accessibilityIdentifier
         return button
     }
     
